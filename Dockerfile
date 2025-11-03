@@ -8,7 +8,7 @@ COPY main.go .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -a -installsuffix cgo -o configManager main.go
 
 
-FROM alpine/git:latest
+FROM ubuntu:latest
 
 WORKDIR /app
 
