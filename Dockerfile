@@ -14,4 +14,6 @@ WORKDIR /app
 
 COPY --from=builder /app/configManager .
 
+RUN apt install -y git
+
 ENTRYPOINT ["/app/configManager"]
