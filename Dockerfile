@@ -8,12 +8,14 @@ COPY main.go .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -a -installsuffix cgo -o configManager main.go
 
 
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 WORKDIR /app
 
 COPY --from=builder /app/configManager .
 
-RUN apt install -y git
+RUN apt update
+
+RUN apt install git -y
 
 ENTRYPOINT ["/app/configManager"]
